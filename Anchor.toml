@@ -1,0 +1,29 @@
+[toolchain]
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+clawnch_protocol = "programs/clawnch-protocol/target/deploy/clawnch_protocol.so"
+
+[programs.devnet]
+clawnch_protocol = "programs/clawnch-protocol/target/deploy/clawnch_protocol.so"
+
+[programs.mainnet]
+clawnch_protocol = "programs/clawnch-protocol/target/deploy/clawnch_protocol.so"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Devnet"
+wallet = "~/.config/solana/cli/config.yml"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json"
+lint = "yarn run prettier \"*/**/*.rs\" \"*/**/*.rs\""
+lint-fix = "yarn run prettier --write \"*/**/*.rs\" \"*/**/*.rs\""
+
+[test]
+startup = "anchor test"
