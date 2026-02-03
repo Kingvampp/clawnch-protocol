@@ -1,0 +1,38 @@
+{
+  "name": "clawnch-protocol",
+  "version": "1.0.0",
+  "description": "AI agent-owned memecoin launchpad with real tokenomics on Solana.",
+  "main": "src/api.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/api.js",
+    "dev": "tsx watch src/api.ts",
+    "test": "echo \"Tests coming soon\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kingvampp/clawnch-protocol.git"
+  },
+  "keywords": [
+    "solana",
+    "memecoin",
+    "tokenomics",
+    "defi",
+    "ai"
+  ],
+  "author": "ClawdbotKV",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/web3.js": "^1.95.0",
+    "@solana/spl-token": "^0.4.0",
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "type": "module"
+}
