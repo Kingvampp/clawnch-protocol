@@ -2,23 +2,20 @@
 name = "clawnch-protocol"
 version = "0.1.0"
 description = "AI agent-owned memecoin launchpad with real tokenomics on Solana"
+edition = "2021"
 license = "MIT"
 
 [lib]
-crate-type = ["cdylib"]
-path = "src"
+crate-type = ["cdylib", "lib"]
+path = "src/lib.rs"
 
 [dependencies]
-anchor-lang = "0.30.1"
-anchor-spl = "0.3.0"
-solana-program = "2.0.5"
-thiserror = "1.0"
-
-[dev-dependencies]
-anchor-lang = "0.30.1"
-anchor-spl = "0.3.0"
+anchor-lang = "0.32.1"
 
 [features]
-cpi = ["no-log-ix-name"]
+default = []
 cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
 no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build"]

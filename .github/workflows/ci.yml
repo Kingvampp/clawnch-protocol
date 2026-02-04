@@ -1,0 +1,50 @@
+name: Anchor Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/
+            ~/.local/share/solana/
+            target/
+          key: ${{ runner.os }}-solana-stable-anchor-0.32.1
+          
+      - name: Install Solana
+        run: |
+          sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+        
+      - name: Install Anchor
+        run: |
+          npm i -g @coral-xyz/anchor-cli@0.32.1
+          
+      - name: Verify installations
+        run: |
+          rustc --version
+          solana --version
+          anchor --version
+          
+      - name: Build
+        run: anchor build
